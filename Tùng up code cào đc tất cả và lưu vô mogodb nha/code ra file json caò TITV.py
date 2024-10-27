@@ -4,7 +4,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-import json
 from pymongo import MongoClient
 
 # Đường dẫn tới geckodriver
@@ -13,29 +12,23 @@ service = Service(gecko_path)
 
 # Kết nối tới MongoDB
 mongo_client = MongoClient("mongodb://localhost:27017/")
-db = mongo_client["course_database"]  # Tạo hoặc kết nối đến database
-courses_collection = db["courses"]  # Tạo hoặc kết nối đến collection cho các môn học
-reviews_collection = db["reviews"]  # Tạo hoặc kết nối đến collection cho bình luận
+db = mongo_client["course_database"]
+courses_collection = db["courses"]
 
-# Hàm để thu thập thông tin môn học
 def collect_course_info():
     driver = webdriver.Firefox(service=service)
     driver.get("https://titv.vn/")
-    time.sleep(10)  # Tăng thời gian chờ tải trang
+    time.sleep(10)
 
     all_courses = {}
 
     for data_id in range(75, 82):
-        li_element = driver.find_element(By.CSS_SELECTOR, f'span[data-id="{data_id}"]')
+        li_element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, f'span[data-id="{data_id}"]')))
         li_name = li_element.text
-        driver.execute_script("arguments[0].scrollIntoView();", li_element)
-        WebDriverWait(driver, 15).until(EC.element_to_be_clickable(li_element))
         li_element.click()
         time.sleep(10)
 
-        all_courses[li_name] = []
-
-        course_elements = driver.find_elements(By.CSS_SELECTOR, 'div.ms_lms_courses_card_item')
+        course_elements = WebDriverWait(driver, 20).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'div.ms_lms_courses_card_item')))
 
         for course in course_elements:
             try:
@@ -51,14 +44,13 @@ def collect_course_info():
                     "rating": rating_element,
                     "members_count": members_count,
                     "views_count": views_count,
-                    "category": li_name
+                    "category": li_name,
+                    "reviews": []
                 }
-                all_courses[li_name].append(course_info)
-
-                # Lưu vào MongoDB
-                courses_collection.insert_one(course_info)
+                all_courses[course_name] = course_info
 
             except Exception as e:
+                print(f"Error collecting course info: {e}")
                 continue
 
         driver.back()
@@ -66,8 +58,19 @@ def collect_course_info():
 
     driver.quit()
 
-# Hàm thu thập bình luận từ tất cả các môn học
-def collect_reviews_from_all():
+    for course_name, course_info in all_courses.items():
+        try:
+            courses_collection.update_one(
+                {"name": course_name},
+                {"$set": course_info},
+                upsert=True
+            )
+        except Exception as e:
+            print(f"Error saving course {course_name}: {e}")
+
+    return all_courses
+
+def collect_reviews(courses):
     driver = webdriver.Firefox(service=service)
     driver.get("https://titv.vn/")
     time.sleep(10)
@@ -96,6 +99,8 @@ def collect_reviews_from_all():
     for i in range(len(course_elements)):
         try:
             course_link = course_elements[i].find_element(By.CSS_SELECTOR, 'a')
+            driver.execute_script("arguments[0].scrollIntoView();", course_link)  # Cuộn đến phần tử
+            time.sleep(2)
             course_link.click()
             time.sleep(10)
 
@@ -105,8 +110,12 @@ def collect_reviews_from_all():
             reviews = driver.find_elements(By.CSS_SELECTOR, '.masterstudy-single-course-reviews__item-content p')
             review_list = [review.text for review in reviews] if reviews else []
 
-            # Lưu vào MongoDB
-            reviews_collection.insert_one({"course_name": course_name, "reviews": review_list})
+            if course_name in courses:
+                courses[course_name]["reviews"] = review_list
+                courses_collection.update_one(
+                    {"name": course_name},
+                    {"$set": {"reviews": review_list}}
+                )
 
             driver.back()
             time.sleep(10)
@@ -115,15 +124,19 @@ def collect_reviews_from_all():
             course_elements = driver.find_elements(By.CSS_SELECTOR, 'div.ms_lms_courses_card_item_wrapper')
 
         except Exception as e:
+            print(f"Error collecting reviews for {course_name}: {e}")
             continue
 
     driver.quit()
 
-# Chạy đoạn 1
-collect_course_info()
+# Chạy đoạn 1 để thu thập thông tin khóa học
+courses_data = collect_course_info()
 
-# Chạy đoạn 2
-collect_reviews_from_all()
+# Chạy đoạn 2 để thu thập bình luận và cập nhật vào khóa học
+collect_reviews(courses_data)
+
+
+
 
 
 
