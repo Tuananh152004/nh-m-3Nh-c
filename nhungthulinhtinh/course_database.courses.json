@@ -1,0 +1,228 @@
+[{
+  "_id": {
+    "$oid": "671d0e4bf0175c51fa703ac5"
+  },
+  "category": "Kiến thức nền tảng",
+  "name": "[Video] Lập trình C",
+  "price": "Free",
+  "rating": "4.7",
+  "members_count": "112313",
+  "views_count": "37617",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "671d0e4bf0175c51fa703ac6"
+  },
+  "category": "Kiến thức nền tảng",
+  "name": "[Video] Lập trình Java (Java Core)",
+  "price": "Free",
+  "rating": "5.0",
+  "members_count": "271416",
+  "views_count": "51269",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "671d0e4bf0175c51fa703ac7"
+  },
+  "category": "Data Science",
+  "name": "[Video] Lập trình Python cơ bản",
+  "price": "Free",
+  "rating": "5.0",
+  "members_count": "26599",
+  "views_count": "11647",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "671d0e4bf0175c51fa703ac8"
+  },
+  "category": "Kiến thức nền tảng",
+  "name": "Toán rời rạc",
+  "price": "Free",
+  "rating": "0.0",
+  "members_count": "23734",
+  "views_count": "8102",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "671d0e4bf0175c51fa703ac9"
+  },
+  "category": "Kiến thức nền tảng",
+  "name": "[Video] Cấu trúc dữ liệu và giải thuật",
+  "price": "Free",
+  "rating": "0.0",
+  "members_count": "17907",
+  "views_count": "12036",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "671d0e4bf0175c51fa703aca"
+  },
+  "category": "Mới học lập trình",
+  "name": "Quản trị Hệ điều hành LINUX (LPI1)",
+  "price": "Free",
+  "rating": "0.0",
+  "members_count": "16368",
+  "views_count": "3978",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "671d0e4bf0175c51fa703acb"
+  },
+  "category": "Kiến thức nền tảng",
+  "name": "Cấu trúc dữ liệu và giải thuật Java",
+  "price": "Free",
+  "rating": "0.0",
+  "members_count": "6161",
+  "views_count": "3167",
+  "reviews": []
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bbfc"
+  },
+  "name": "[Video] JDBC - Lập trình Java với cơ sở dữ liệu (Phần 1)",
+  "category": "Java Fullstack",
+  "members_count": "10473",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "10680"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bbfd"
+  },
+  "name": "[Video] Tự học SQL với MySQL",
+  "category": "Kiến thức nền tảng",
+  "members_count": "19672",
+  "price": "Free",
+  "rating": "5.0",
+  "reviews": [],
+  "views_count": "9693"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bbfe"
+  },
+  "name": "[Video] SQL Server - Cơ bản và Nâng cao",
+  "category": "Kiến thức nền tảng",
+  "members_count": "38789",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "13460"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bbff"
+  },
+  "name": "[Video] Lập trình viên Java Web Fullstack: React kết hợp Spring Boot",
+  "category": "Java Fullstack",
+  "members_count": "1",
+  "price": "399,000 đ",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "13414"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc00"
+  },
+  "name": "[Video] Lập trình viên Java Backend: Spring Boot và Hibernate",
+  "category": "Java Backend",
+  "members_count": "1",
+  "price": "339,000 đ",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "13039"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc01"
+  },
+  "name": "[Video] Thiết kế web - HTML - CSS - JavaScript - Bootstrap",
+  "category": "Lập trình Web",
+  "members_count": "23829",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "5143"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc02"
+  },
+  "name": "[Video] Quản lý project Java với Maven",
+  "category": "Java Fullstack",
+  "members_count": "3343",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "6266"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc03"
+  },
+  "name": "[Video] Lập trình mạng (sử dụng Java)",
+  "category": "Kiến thức nền tảng",
+  "members_count": "34742",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "11009"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc04"
+  },
+  "name": "[Video] Thị giác máy tính - Computer Vision",
+  "category": "Data Science",
+  "members_count": "6306",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "3473"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc05"
+  },
+  "name": "[Video] Nguyên lý Hệ điều hành",
+  "category": "Kiến thức nền tảng",
+  "members_count": "5456",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "6096"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc06"
+  },
+  "name": "[Video] Microsoft Excel cơ bản",
+  "category": "Kiến thức nền tảng",
+  "members_count": "19000",
+  "price": "Free",
+  "rating": "0.0",
+  "reviews": [],
+  "views_count": "3650"
+},
+{
+  "_id": {
+    "$oid": "671eeaf5d9a43faa5ef8bc07"
+  },
+  "name": "[Video] Git và GitHub toàn tập",
+  "category": "Kiến thức nền tảng",
+  "members_count": "15420",
+  "price": "Free",
+  "rating": "5.0",
+  "reviews": [],
+  "views_count": "7794"
+}]
